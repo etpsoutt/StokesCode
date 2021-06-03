@@ -6,3 +6,7 @@ import dolfin as df
 
 print (df.__version__)
 
+# Prerequired : 
+Fenics and its basic dependencies, see https://fenicsproject.org/
+The few python modules that I like to use, in particular : matplotlib and petsc.
+

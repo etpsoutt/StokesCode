@@ -1,6 +1,6 @@
 # Name : Stokes2D.py
 # Author : Emile Soutter
-# Use : simple 2D experiment to compute and check the solution of a Stokes experiment.
+# Use : simple 2D experiment to compute and check the solution of a Stokes experiment, with (possibly) non homogeneous given density.
 from __future__ import print_function
 from fenics import *
 import numpy as np
@@ -140,9 +140,9 @@ def Compute_StokesSolution2D(N,Amplirho=0.0,gammarho=1.0,rhol=1.0,mu=1.0,AmpliR=
     return uerrorL2,perrorL2,uerrorH1
 
 #Main algorithm : parameters and boucle for convergence
-Amplirho=0.9;
+Amplirho=0.0;
 gamma=1;
-Maxconv=15; # number of meshes
+Maxconv=6; # number of meshes
 MinvalueN=10; # minimum N
 uL2=np.zeros(Maxconv);
 uH1=np.zeros(Maxconv);
@@ -165,5 +165,4 @@ for kk in range (0,Maxconv):
     if(kk==Maxconv-1):
         saveparam=1;
     uL2[kk],pL2[kk],uH1[kk]=Compute_StokesSolution2D(Nvector[kk],order=1,Amplirho=Amplirho,savefiles=saveparam,gammarho=gamma);
-    #pdb.set_trace()
 pdb.set_trace()
